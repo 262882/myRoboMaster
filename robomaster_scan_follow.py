@@ -5,7 +5,6 @@ The robot will scan the area around it until it identifys
 another S1 using its vision system. Once spotted, it follows
 and maintains a constant distance. Losing sight will cause 
 a return to scanning.
-
 '''
 
 # init PID controllers
@@ -23,7 +22,7 @@ def vision_recognized_car(msg):
 
     '''
     This function is called when another S1 is spotted
-    The postion paramters are updated
+    The postion variables are updated
     '''
 
     # Allow access to params
@@ -86,7 +85,7 @@ def start():
             gimbal_ctrl.rotate_with_speed(pid_x.get_output(), pid_y.get_output())
             chassis_ctrl.move_with_speed(pid_m.get_output(), 0, 0) # Only move forwards
 
-            time.sleep(0.05) # set refresh rate
+            time.sleep(0.05) # control refresh rate for PID control update
 
         time.sleep(0.5) # Gives a moment for S1 to reidentify if lost for a split second
 
